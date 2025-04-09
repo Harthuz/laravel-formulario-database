@@ -44,3 +44,11 @@ Route::post('/editar-produto/{id}', function(Request $request, $id){
 
     echo "Produto editado com sucesso!";
 });
+
+// Excluir produto
+Route::get('/excluir-produto/{id}', function($id){
+    $produto = Produto::find($id);
+    $produto->delete();
+
+    echo "Produto excluído com sucesso!";
+});
