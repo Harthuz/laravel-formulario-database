@@ -19,6 +19,13 @@ Route::post('/cadastrar', function (Request $request) {
     
     echo "Produto criado com sucesso!";
 });
+
+// Listar produto
+Route::get('/listar-produto/{id}', function($id){
+    $produto = Produto::find($id);
+    return view('listar', ['produto' => $produto]);
+});
+
 // Editar produto (GET)
 Route::get('/editar-produto/{id}', function($id){
     $produto = Produto::find($id);
