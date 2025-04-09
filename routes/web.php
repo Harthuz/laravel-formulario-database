@@ -19,3 +19,21 @@ Route::post('/cadastrar', function (Request $request) {
     
     echo "Produto criado com sucesso!";
 });
+// Editar produto (GET)
+Route::get('/editar-produto/{id}', function($id){
+    $produto = Produto::find($id);
+    return view('editar', ['produto' => $produto]);
+});
+
+// Editar produto (POST)
+Route::post('/editar-produto/{id}', function(Request $request, $id){
+    $produto = Produto::find($id);
+
+    $produto->update([
+        'nome' => $request->nome,
+        'valor' => $request->valor,
+        'quantidade' => $request->quantidade
+    ]);
+
+    echo "Produto editado com sucesso!";
+});
